@@ -10,7 +10,7 @@
 
 ## How To Run This API Server
 ```
-$ git clone xxxxx
+$ git clone https://github.com/keiyonekawa0614/go_rest_api.git
 $ cd go-rest-api
 $ docker-compose up -d
 ```
