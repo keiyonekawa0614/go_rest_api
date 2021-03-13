@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    container_name: gtb_app
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    tty: true
+    volumes:
+      - ./:/go/src/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    container_name: gtb_db
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/db:/docker-entrypoint-initdb.d
+      - ./docker/mysql/db/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: go_rest_api
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
