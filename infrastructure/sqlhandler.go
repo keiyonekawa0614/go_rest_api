@@ -2,8 +2,8 @@ package infrastructure
 
 import (
 	"fmt"
+	"os"
 	"time"
-
 	"app/interfaces/database"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -17,11 +17,11 @@ func NewMySqlDb() database.SqlHandler {
 
 	connectionString := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=true&loc=Local",
-		"user",
-		"password",
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASS"),
 		"db",
-		"3306",
-		"go_rest_api",
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB"),
 	)
 
 	conn, err := open(connectionString, 30)

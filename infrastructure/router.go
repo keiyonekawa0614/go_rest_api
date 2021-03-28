@@ -1,14 +1,17 @@
 package infrastructure
 
 import (
+	"net/http"
+	"log"
 	"app/interfaces/controllers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"net/http"
+	"github.com/joho/godotenv"
 )
 
 func Init() {
 	e := echo.New()
+	Env_load()
 
 	userController := controllers.NewUserController(NewMySqlDb())
 
@@ -22,4 +25,11 @@ func Init() {
 	e.DELETE("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "DeleteUser") })
 
 	e.Logger.Fatal(e.Start(":8080"))
+}
+
+func Env_load() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 }
