@@ -13,6 +13,9 @@
 $ git clone https://github.com/keiyonekawa0614/go_rest_api.git
 $ cd go-rest-api
 $ docker-compose up -d
+
+# .env書き換え
+$ cp .env.example .env
 ```
 
 ## Reference
