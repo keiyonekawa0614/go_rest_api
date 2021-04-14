@@ -14,14 +14,13 @@ func Init() {
 	Env_load()
 
 	userController := controllers.NewUserController(NewMySqlDb())
-	oauth2Controller := controllers.NewOauth2Controller()
-	callbackController := controllers.NewCallbackController()
+	googleOauth2Controller := controllers.NewGoogleOauth2Controller(NewGetConnect())
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.GET("/google/oauth2", func(c echo.Context) error { return oauth2Controller.Get(c) })
-	e.GET("/google/callback", func(c echo.Context) error { return callbackController.Get(c) })
+	e.GET("/google/oauth2", func(c echo.Context) error { return googleOauth2Controller.Auth(c) })
+	e.GET("/google/callback", func(c echo.Context) error { return googleOauth2Controller.Callback(c) })
 	e.GET("/users", func(c echo.Context) error { return userController.GetUsers(c) })
 	e.GET("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "GetUser") })
 	e.POST("/users", func(c echo.Context) error { return c.String(http.StatusOK, "CreateUser") })

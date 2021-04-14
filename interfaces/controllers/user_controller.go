@@ -10,9 +10,9 @@ type UserController struct {
 }
 
 func NewUserController(sqlHandler database.SqlHandler) *UserController {
-	return &UserController{
-		Interactor: usecase.UserInteractor{
-			UserRepository: &database.UserRepository{
+	return &UserController {
+		Interactor: usecase.UserInteractor {
+			UserRepository: &database.UserRepository {
 				SqlHandler: sqlHandler,
 			},
 		},

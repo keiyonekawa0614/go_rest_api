@@ -1,4 +1,4 @@
-package google
+package infrastructure
 
 import (
 	"os"
@@ -11,7 +11,7 @@ const (
 )
 
 // GetConnect 接続を取得する
-func GetConnect() *oauth2.Config {
+func NewGetConnect() *oauth2.Config {
 	config := &oauth2.Config{
 		ClientID: os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
