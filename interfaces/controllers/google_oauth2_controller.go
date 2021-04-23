@@ -38,6 +38,7 @@ func (controller *GoogleOauth2Controller) Callback(c Context) (err error) {
 	tokenInfo, _ := service.Tokeninfo().AccessToken(tok.AccessToken).Context(context).Do()
 
 	var object = make(map[string]string)
+	object["access_token"] = tok.AccessToken
 	object["user_id"] = tokenInfo.UserId
 	object["email"] = tokenInfo.Email
 
