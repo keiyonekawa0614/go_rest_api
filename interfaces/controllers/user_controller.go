@@ -21,11 +21,8 @@ func NewUserController(sqlHandler database.SqlHandler) *UserController {
 
 func (controller *UserController) GetUsers(c Context) (err error) {
 	users, err := controller.Interactor.Users()
-
 	if err != nil {
-		c.JSON(500, NewError(err))
-		return
+		return c.JSON(500, NewError(err))
 	}
-	c.JSON(200, users)
-	return
+	return c.JSON(200, users)
 }
