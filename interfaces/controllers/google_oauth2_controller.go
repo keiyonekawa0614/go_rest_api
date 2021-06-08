@@ -27,12 +27,10 @@ func (controller *GoogleOauth2Controller) Callback(c Context) (err error) {
 	context := context.Background()
 	tok, err := controller.Config.Exchange(context, c.QueryParam("code"))
 	if err != nil {
-		c.JSON(500, NewError(err))
-		return
+		return c.JSON(500, NewError(err))
 	}
 	if tok.Valid() == false {
-		c.JSON(500, NewError(err))
-		return
+		return c.JSON(500, NewError(err))
 	}
 	service, _ := v2.New(controller.Config.Client(context, tok))
 	tokenInfo, _ := service.Tokeninfo().AccessToken(tok.AccessToken).Context(context).Do()
