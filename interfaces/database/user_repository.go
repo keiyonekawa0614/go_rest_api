@@ -12,3 +12,10 @@ func (userRepository *UserRepository) FindAll() (users domain.Users, err error) 
 	}
 	return
 }
+
+func (userRepository *UserRepository) FindById(id int) (user domain.User, err error) {
+	if err = userRepository.Find(&user, id).Error; err != nil {
+		return
+	}
+	return
+}
