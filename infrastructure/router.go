@@ -22,7 +22,7 @@ func Init() {
 	e.GET("/google/oauth2", func(c echo.Context) error { return googleOauth2Controller.Auth(c) })
 	e.GET("/google/callback", func(c echo.Context) error { return googleOauth2Controller.Callback(c) })
 	e.GET("/users", func(c echo.Context) error { return userController.GetUsers(c) })
-	e.GET("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "GetUser") })
+	e.GET("/users/:id", func(c echo.Context) error { return userController.GetUser(c) })
 	e.POST("/users", func(c echo.Context) error { return c.String(http.StatusOK, "CreateUser") })
 	e.PUT("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "UpdateUser") })
 	e.DELETE("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "DeleteUser") })
