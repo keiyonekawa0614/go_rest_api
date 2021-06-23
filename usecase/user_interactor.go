@@ -15,3 +15,8 @@ func (interactor *UserInteractor) UserById(id int) (user domain.User, err error)
 	user, err = interactor.UserRepository.FindById(id)
 	return
 }
+
+func (interactor *UserInteractor) Add(u domain.User) (user domain.User, err error) {
+	user, err = interactor.UserRepository.Store(u)
+	return
+}

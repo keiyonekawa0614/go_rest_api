@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"app/interfaces/database"
 	"app/usecase"
+	"app/domain"
 )
 
 type UserController struct {
@@ -31,6 +32,16 @@ func (controller *UserController) GetUsers(c Context) (err error) {
 func (controller *UserController) GetUser(c Context) (err error) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	user, err := controller.Interactor.UserById(id)
+	if err != nil {
+		return c.JSON(500, NewError(err))
+	}
+	return c.JSON(200, user)
+}
+
+func (controller *UserController) CreateUser(c Context) (err error) {
+	u := domain.User{}
+	c.Bind(&u)
+	user, err := controller.Interactor.Add(u)
 	if err != nil {
 		return c.JSON(500, NewError(err))
 	}

@@ -63,3 +63,7 @@ func open(path string, count uint) (*gorm.DB, error) {
 func (handler *SqlHandler) Find(out interface{}, where ...interface{}) *gorm.DB {
 	return handler.Conn.Find(out, where...)
 }
+
+func (handler *SqlHandler) Create(value interface{}) *gorm.DB {
+	return handler.Conn.Create(value)
+}
