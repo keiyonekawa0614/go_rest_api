@@ -67,3 +67,7 @@ func (handler *SqlHandler) Find(out interface{}, where ...interface{}) *gorm.DB 
 func (handler *SqlHandler) Create(value interface{}) *gorm.DB {
 	return handler.Conn.Create(value)
 }
+
+func (handler *SqlHandler) Delete(value interface{}) *gorm.DB {
+	return handler.Conn.Delete(value)
+}

@@ -25,7 +25,7 @@ func Init() {
 	e.GET("/users/:id", func(c echo.Context) error { return userController.GetUser(c) })
 	e.POST("/users", func(c echo.Context) error { return userController.CreateUser(c) })
 	e.PUT("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "UpdateUser") })
-	e.DELETE("/users/:id", func(c echo.Context) error { return c.String(http.StatusOK, "DeleteUser") })
+	e.DELETE("/users/:id", func(c echo.Context) error { return userController.DeleteUser(c) })
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

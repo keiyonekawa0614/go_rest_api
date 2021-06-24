@@ -20,3 +20,8 @@ func (interactor *UserInteractor) Add(u domain.User) (user domain.User, err erro
 	user, err = interactor.UserRepository.Store(u)
 	return
 }
+
+func (interactor *UserInteractor) DeleteById(user domain.User) (err error) {
+	err = interactor.UserRepository.DeleteById(user)
+	return
+}
