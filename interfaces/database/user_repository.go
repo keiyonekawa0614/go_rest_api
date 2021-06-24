@@ -28,7 +28,7 @@ func (userRepository *UserRepository) Store(u domain.User) (user domain.User, er
 	return
 }
 
-func (userRepository *UserRepository) DeleteByID(user domain.User) (err error) {
+func (userRepository *UserRepository) DeleteById(user domain.User) (err error) {
 	if err = userRepository.Delete(&user).Error; err != nil {
 			return
 	}
