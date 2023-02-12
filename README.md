@@ -20,7 +20,6 @@ $ cp .env.example .env
 
 ## Reference
 - [Clean ArchitectureでAPI Serverを構築してみる](https://qiita.com/hirotakan/items/698c1f5773a3cca6193e)
-- [Go(Echo)×MySQL×Docker×Clean ArchitectureでAPIサーバー構築してみた](https://qiita.com/Le0tk0k/items/c2945c260f28f7ee2d47)
 - [Golang + Mysql + Dockerで環境構築したった](https://shinter8823.hatenablog.com/entry/2019/07/18/015051)
 - [Dockerfile リファレンス](http://docs.docker.jp/engine/reference/builder.html)
 - [docker compose リファレンス](http://docs.docker.jp/compose/compose-file.html#)
